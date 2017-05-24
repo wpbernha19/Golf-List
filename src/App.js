@@ -2,25 +2,55 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Header from './Header'
-import GolfList from './GolfList'
-import UserInput from './UserInput'
+import CourseList from './CourseList'
+import AddCourseBtn from './AddCourseBtn'
 
 
 class App extends Component {
   state = {
-    courses: {
-      'course-1': { id: 'course-1', name: 'Coffin'},
-      'course-2': { id: 'course-2', name: 'Meridian Hills'},
-      'course-3': { id: 'course-3', name: 'Riverside'},
+    courses: { }
+  }
+
+  course() {
+    return {
+      id: `course-${Date.now()}`,
+      name: '',
     }
   }
 
+  addCourse = () => {
+    const courses = {...this.state.courses}
+    const course = this.course()
+    courses[course.name] = course
+    this.setState({ courses })
+  }
+
+  saveCourse = (course) => {
+    const courses = {...this.state.courses}
+    courses[course.id] = course
+    this.setState({ courses })
+  }
+
+  removeCourse = (course) => {
+    const courses = {...this.state.courses}
+    delete courses[course.id]
+    this.setState({ courses})
+  }
+
   render() {
+    const actions = {
+      saveCourse: this.saveCourse,
+      removeCourse: this.removeCourse,
+    }
+
     return (
       <div className="App">
         <Header />
-        <UserInput />
-        <GolfList courses={this.state.courses} />
+        <AddCourseBtn addCourse={this.addCourse} />
+        <CourseList 
+          courses={this.state.courses}
+          {...actions}
+        />
       </div>
     );
   }
