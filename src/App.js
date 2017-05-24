@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Header'
 import GolfList from './GolfList'
-import AddCourseBtn from './AddCourseBtn'
+import UserInput from './UserInput'
+
 
 class App extends Component {
   state = {
@@ -18,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <AddCourseBtn />
+        <UserInput />
         <GolfList courses={this.state.courses} />
       </div>
     );
