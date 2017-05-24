@@ -4,7 +4,7 @@ import './AddCourseBtn.css'
 
 const AddCourseBtn = (props) => {
   return(
-    <button class="add-course">Add Course</button>
+    <button className="add-course">Add Course</button>
   )
 }
 
