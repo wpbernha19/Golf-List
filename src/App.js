@@ -4,9 +4,19 @@ import './App.css';
 import Header from './Header'
 import CourseList from './CourseList'
 import AddCourseBtn from './AddCourseBtn'
+import base from './base'
 
 
 class App extends Component {
+  componentWillMount() {
+    base.syncState(
+      'courses',
+      {
+        context: this,
+        state: 'courses'
+      }
+    )
+  }
   state = {
     courses: {}
   }
@@ -33,7 +43,7 @@ class App extends Component {
 
   removeCourse = (course) => {
     const courses = {...this.state.courses}
-    delete courses[course.id]
+    courses[course.id] = null
     this.setState({ courses})
   }
 
