@@ -8,8 +8,8 @@ const GolfList = (props) => {
     <ul className="GolfList">
       {
         Object
-          .keys(props.golfs)
-          .map(golfId => <Golf golf={props.golfs[golfId]} key={golfId}/>)
+          .keys(props.courses)
+          .map(golfId => <Golf golf={props.courses[golfId]} key={golfId}/>)
       }
     </ul>
   )
