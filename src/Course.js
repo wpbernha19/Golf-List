@@ -10,17 +10,6 @@ const Course = ({ course, saveCourse, removeCourse }) => {
     saveCourse(course)
   }
 
-  // blurOnEnter = (ev) => {
-  //   if (ev.key === 'Enter') {
-  //     ev.preventDefault()
-  //     ev.target.blur()
-  //   }
-  // }
-
-
-// return(
-//   const { course, removeCourse } = this.props
-
   return(
     <li className="Course">
       <input type="checkbox" value="on" />

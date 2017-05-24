@@ -1,7 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Chonburi|BioRhyme);
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css);
+/*@import url(https://fonts.googleapis.com/css?family=Chonburi|BioRhyme);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css);*/
 
-.Actions {
+.actions {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
@@ -9,11 +9,11 @@
   margin: -10px 0;
 }
 
-.Thing:hover .Actions {
+.Thing:hover .actions {
   opacity: 1;
 }
 
-.Actions button {
+.actions button {
   border: 0;
   background: transparent;
   color: #999;
