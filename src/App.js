@@ -8,7 +8,7 @@ import AddCourseBtn from './AddCourseBtn'
 
 class App extends Component {
   state = {
-    courses: { }
+    courses: {}
   }
 
   course() {
@@ -21,7 +21,7 @@ class App extends Component {
   addCourse = () => {
     const courses = {...this.state.courses}
     const course = this.course()
-    courses[course.name] = course
+    courses[course.id] = course
     this.setState({ courses })
   }
 

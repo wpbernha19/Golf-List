@@ -8,20 +8,23 @@ const CourseList = (props) => {
     return b.match(/\d+/)[0] - a.match(/\d+/)[0]
   }
 
-  return(
+  return (
     <ul className="CourseList">
       {
         Object
           .keys(props.courses)
           .sort(sortCourses)
-          .map(courseId => <Course 
-                              {...props}
-                              course={props.courses[courseId]}
-                              key={courseId}
-                             />)
+          .map(courseId => <Course
+                            course={props.courses[courseId]}
+                            key={courseId}
+                            {...props}
+                          />)
+
       }
     </ul>
   )
 }
+
+// ['thing-1', 'thing-2', 'thing-3']
 
 export default CourseList

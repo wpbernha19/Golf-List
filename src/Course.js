@@ -1,30 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ContentEditable from 'react-contenteditable'
 
 import './Course.css'
 import Actions from './Actions'
 
-class Course extends Component {
-  componentDidMount() {
-    this.nameInput.htmlEl.focus()
-  }
-
-  updateName = (ev) => {
-    const { course, saveCourse } = this.props
+const Course = ({ course, saveCourse, removeCourse }) => {
+  const updateName = (ev) => {
     course.name = ev.target.value
     saveCourse(course)
   }
 
-  blurOnEnter = (ev) => {
-    if (ev.key === 'Enter') {
-      ev.preventDefault()
-      ev.target.blur()
-    }
-  }
+  // blurOnEnter = (ev) => {
+  //   if (ev.key === 'Enter') {
+  //     ev.preventDefault()
+  //     ev.target.blur()
+  //   }
+  // }
 
 
-render(){
-  const { course, removeCourse } = this.props
+// return(
+//   const { course, removeCourse } = this.props
 
   return(
     <li className="Course">
@@ -33,15 +28,15 @@ render(){
           <ContentEditable
             className="name"
             html={course.name}
-            onChange={course.updateName}
-            onKeyPress={this.blurOnEnter}
-            ref={input => this.nameInput = input}
+            onChange={updateName}
           />
-         <Actions course={course} removeCourse={removeCourse} /> 
-        </div>
-      </li>
-    )
-  }
+         <Actions 
+          course={course} 
+          removeCourse={removeCourse}
+        /> 
+      </div>
+    </li>
+  )
 }
 
 export default Course
