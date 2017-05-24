@@ -5,6 +5,10 @@ import './Course.css'
 import Actions from './Actions'
 
 class Course extends Component {
+  componentDidMount() {
+    this.nameInput.htmlEl.focus()
+  }
+
   updateName = (ev) => {
     const { course, saveCourse } = this.props
     course.name = ev.target.value
@@ -21,7 +25,7 @@ render() {
               className="name"
               html={course.name}
               onChange={this.updateName}
-
+              ref={input => this.nameInput = input}
             />
           <Actions 
             course={course} 
