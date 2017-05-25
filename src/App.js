@@ -51,22 +51,33 @@ class App extends Component {
     this.setState({ courses})
   }
 
-  render() {
+  signedIn = () => {
+
+  }
+
+  renderMain = () => {
     const actions = {
       saveCourse: this.saveCourse,
       removeCourse: this.removeCourse,
     }
 
     return (
+      <div>
+        <SignOut />
+          <AddCourseBtn addCourse={this.addCourse} />
+          <CourseList 
+            courses={this.state.courses}
+            {...actions}
+        />
+      </div>
+    )
+  }
+
+  render() {
+    return (
       <div className="App">
         <Header />
-        <SignIn />
-        <SignOut />
-        <AddCourseBtn addCourse={this.addCourse} />
-        <CourseList 
-          courses={this.state.courses}
-          {...actions}
-        />
+        {this.signedIn ? this.renderMain() : <SignIn />}
       </div>
     );
   }
