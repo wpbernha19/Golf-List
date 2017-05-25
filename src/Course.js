@@ -55,8 +55,8 @@ render() {
             />
             <input 
               type="date"
+              defaultValue={course.dueDate}
               onChange={this.updateDD}
-              ref={input => this.dueDateInput = input}
             />
           <Actions 
             course={course} 
