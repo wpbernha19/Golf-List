@@ -34,7 +34,7 @@ class App extends Component {
 
   syncCourses = () => {
     base.syncState(
-      'courses',
+      `${this.state.uid}/courses`,
       {
         context: this,
         state: 'courses'
