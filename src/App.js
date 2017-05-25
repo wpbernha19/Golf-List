@@ -16,6 +16,23 @@ class App extends Component {
   }
 
   componentWillMount() {
+    auth.onAuthStateChanged(
+      (user) => {
+        if(user) {
+          this.authHandler({ user })
+        }
+      }
+    )
+  }
+
+  authHandler = (authData) => {
+    this.setState(
+      { uid: authData.user.uid },
+      this.syncCourses
+    )
+  }
+
+  syncCourses = () => {
     base.syncState(
       'courses',
       {
@@ -23,10 +40,6 @@ class App extends Component {
         state: 'courses'
       }
     )
-  }
-
-  authHandler = (authData) => {
-    this.setState({ uid: authData.user.uid })
   }
 
   course() {
