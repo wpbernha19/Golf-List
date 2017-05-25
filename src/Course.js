@@ -23,6 +23,12 @@ class Course extends Component {
     saveCourse(course)
   }
 
+   updateDD = (ev) => {
+    const { course, saveCourse} = this.props
+    course.dueDate = ev.target.value
+    saveCourse(course)
+   }
+
   blurOnEnter = (ev) => {
     if(ev.key === 'Enter') {
       ev.preventDefault()
@@ -46,6 +52,11 @@ render() {
               onChange={this.updateName}
               onKeyPress={this.blurOnEnter}
               ref={input => this.nameInput = input}
+            />
+            <input 
+              type="date"
+              onChange={this.updateDD}
+              ref={input => this.dueDateInput = input}
             />
           <Actions 
             course={course} 
