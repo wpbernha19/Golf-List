@@ -6,7 +6,7 @@ import SignIn from './SignIn'
 import SignOut from './SignOut'
 import CourseList from './CourseList'
 import AddCourseBtn from './AddCourseBtn'
-import base from './base'
+import base, { auth } from './base'
 
 
 class App extends Component {
@@ -61,6 +61,12 @@ class App extends Component {
     return this.state.uid
   }
 
+  signOut = () => {
+    auth
+      .signOut()
+      .then(() => this.setState({ uid: null}))
+  }
+
   renderMain = () => {
     const actions = {
       saveCourse: this.saveCourse,
@@ -69,7 +75,7 @@ class App extends Component {
 
     return (
       <div>
-        <SignOut />
+        <SignOut signOut={this.signOut} />
           <AddCourseBtn addCourse={this.addCourse} />
           <CourseList 
             courses={this.state.courses}
