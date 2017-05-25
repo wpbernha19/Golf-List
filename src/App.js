@@ -25,6 +25,7 @@ class App extends Component {
     return {
       id: `course-${Date.now()}`,
       name: '',
+      completed: false,
     }
   }
 

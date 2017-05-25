@@ -17,6 +17,12 @@ class Course extends Component {
     saveCourse(course)
   }
 
+  toggleCompletion = (ev) => {
+    const { course, saveCourse } = this.props
+    course.completed = ev.target.checked
+    saveCourse(course)
+  }
+
   blurOnEnter = (ev) => {
     if(ev.key === 'Enter') {
       ev.preventDefault()
@@ -28,7 +34,11 @@ render() {
   const { course, removeCourse } = this.props
     return(
       <li className="Course">
-        <input type="checkbox" value="on" />
+        <input 
+          type="checkbox"
+          defaultChecked={course.completed}
+          onChange={this.toggleCompletion}
+        />
         <div className="details">
             <ContentEditable
               className="name"
