@@ -11,9 +11,10 @@ class Course extends Component {
     }
   }
 
-  updateName = (ev) => {
+  handleChange = (ev) => {
     const { course, saveCourse } = this.props
-    course.name = ev.target.value
+    const field = ev.currentTarget.getAttribute('name')
+    course[field] = ev.target.value
     saveCourse(course)
   }
 
@@ -23,11 +24,11 @@ class Course extends Component {
     saveCourse(course)
   }
 
-   updateDD = (ev) => {
-    const { course, saveCourse} = this.props
-    course.dueDate = ev.target.value
-    saveCourse(course)
-   }
+  //  updateDD = (ev) => {
+  //   const { course, saveCourse} = this.props
+  //   course.dueDate = ev.target.value
+  //   saveCourse(course)
+  //  }
 
   blurOnEnter = (ev) => {
     if(ev.key === 'Enter') {
@@ -48,15 +49,17 @@ render() {
         <div className="details">
             <ContentEditable
               className="name"
+              name="name"
               html={course.name}
-              onChange={this.updateName}
+              onChange={this.handleChange}
               onKeyPress={this.blurOnEnter}
               ref={input => this.nameInput = input}
             />
             <input 
               type="date"
+              name="dueDate"
               defaultValue={course.dueDate}
-              onChange={this.updateDD}
+              onChange={this.handleChange}
             />
           <Actions 
             course={course} 
