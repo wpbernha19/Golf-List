@@ -52,7 +52,7 @@ class App extends Component {
   }
 
   signedIn = () => {
-
+    return false
   }
 
   renderMain = () => {
@@ -77,7 +77,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        {this.signedIn ? this.renderMain() : <SignIn />}
+        { this.signedIn() ? this.renderMain() : <SignIn /> }
       </div>
     );
   }
