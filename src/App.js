@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Header from './Header'
+import SignIn from './SignIn'
 import SignOut from './SignOut'
 import CourseList from './CourseList'
 import AddCourseBtn from './AddCourseBtn'
@@ -59,6 +60,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <SignIn />
         <SignOut />
         <AddCourseBtn addCourse={this.addCourse} />
         <CourseList 
