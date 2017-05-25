@@ -4,9 +4,11 @@ import { auth, githubProvider } from './base'
 
 import './SignIn.css'
 
-const SignIn = () => {
-  const authenticate = () => {
-    auth.signInWithPopup(githubProvider)
+const SignIn = ({ authHandler}) => {
+  const authenticate = (provider) => {
+    auth
+      .signInWithPopup(provider)
+      .then(authHandler)
   }
   return (
     <button 

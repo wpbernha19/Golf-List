@@ -10,6 +10,11 @@ import base from './base'
 
 
 class App extends Component {
+  state = {
+    courses: {},
+    uid: null,
+  }
+
   componentWillMount() {
     base.syncState(
       'courses',
@@ -19,8 +24,9 @@ class App extends Component {
       }
     )
   }
-  state = {
-    courses: {}
+
+  authHandler = (authData) => {
+    this.setState({ uid: authData.user.uid })
   }
 
   course() {
@@ -52,7 +58,7 @@ class App extends Component {
   }
 
   signedIn = () => {
-    return false
+    return this.state.uid
   }
 
   renderMain = () => {
@@ -77,7 +83,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        { this.signedIn() ? this.renderMain() : <SignIn /> }
+        { this.signedIn() ? this.renderMain() : <SignIn authHandler={this.authHandler} /> }
       </div>
     );
   }
